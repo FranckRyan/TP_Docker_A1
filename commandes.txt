@@ -1,0 +1,20 @@
+FROM python:3.9
+# Définition du répertoire de travail
+WORKDIR /app
+# Copie des fichiers de l'application dans l'image
+COPY app.py /app/
+# Installation des dépendances
+COPY requirements.txt /app/
+RUN pip install -r requirements.txt
+# Définition de la commande de lancement
+CMD ["python", "app.py"]
+EOF
+
+   20  sudo docker build -t franckryan/mon-flask-app .
+   21  sudo docker run -d -p 5000:5000 franckryan/mon-flask-app
+   22  sudo docker login
+   23  sudo docker push franckryan/mon-flask-app
+   24  cat ~/tp_docker/app.py
+   25  cat ~/tp_docker/Dockerfile
+   26  cat ~/tp_docker/requirements.txt
+   27  history | tail -n 20
